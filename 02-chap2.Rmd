@@ -1,0 +1,226 @@
+# Data & Methodology {#math-sci}
+
+<!-- Required to number equations in HTML files -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+## Data Collection
+
+The questionnaire-collecting process started both online and on-site in July of 2022. The online questionnaires were written on the cover page that only those who had ever been to Qinghai-Tibet Plateau were qualified to fill out them. Then followed by was the on-site questionnaire-distributing process along with the Second Tibetan Plateau Scientific Expedition and Research Program during late July to early August. To specifically target at tourists while considering the convenience of conducting investigation, we mainly chose four touristic sites to collect questionnaires along the expedition route. Eventually, we collected 729 on-site questionnaires, which were acquired mostly in four sites - Qinghai Province Museum in Xining City, Qinghai Lake Scenic Area, Dachaidan Emerald Lake Scenic Area, Mani Stone Mound Scenic Area in Yushu City (Figure \ref{fig:SampleLocations}). With a total number of 830 questionnaires, 16 were filtered out due to a lot of missing answers, leaving 814 eventually entering modeling phase, with an validity rate of 98.07%.
+
+```{=tex}
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{paste0(here(), "\figure\SampleLocations.jpg"}
+\caption{Sampling Locations on the Qinghai-Tibet Plateau}
+\label{fig:SampleLocations}
+\end{figure}
+```
+
+## Variables
+
+The survey was originally designed in the contexts of assessing smart transportation within the Qinghai-Tibet Plateau, which delved into the multifaceted aspects of travel behavior, travel perceptions and technology adoption and usage. This study focuses on several key dimensions, grounded in the region's tourist travel behavior, their perceived travel environment, travel satisfaction, and their socioeconomic characteristics.
+
+Specifically, tourists' travel behavior includes 
+
+
+## Methodology
+
+
+
+## Model Construction
+
+两张图
+
+```{r, include=FALSE, eval=FALSE}
+if(!require(remotes)){
+    install.packages("remotes")
+}
+library(remotes)
+remotes::install_github("Horan517/TravelBehaviorQinghaiData")
+
+if (!requireNamespace("lavaan", quietly = TRUE)) {
+    install.packages("lavaan")
+}
+
+if (!requireNamespace("kableExtra", quietly = TRUE)) {
+    install.packages("kableExtra")
+}
+```
+
+```{r}
+# load packages
+library(tidyverse)
+library(TravelBehaviorQinghaiData)
+library(lavaan)
+library(kableExtra)
+
+# load dataset
+data("TBQT")
+
+# detect dataset
+str(TBQT)
+```
+
+```{r, warning = FALSE}
+# Define the CFA model
+cfa_model <- '
+# Measurement model
+tourist_envi =~ ta_envi1 + ta_envi2 + ta_envi3 + ta_envi4 + ta_envi5 + ta_envi6
+road_envi =~ r_envi1 + r_envi2 + r_envi3 + r_envi4 + r_envi5
+'
+
+# Fit the model
+fit_cfa <- cfa(cfa_model, data = TBQT, missing = "ml")
+
+# Model summary
+cfa_summary <- summary(fit_cfa, fit.measures = TRUE)
+print(cfa_summary)
+```
+
+```{r, warning = FALSE}
+# Define the SEM model
+model <- '
+# Measurement model
+tourist_envi =~ ta_envi1 + ta_envi2 + ta_envi3 + ta_envi4 + ta_envi5 + ta_envi6
+road_envi =~ r_envi1 + r_envi2 + r_envi3 + r_envi4 + r_envi5
+
+# Structural model
+frequency_travel + daily_d ~ gender + age + residence + income + edu_lvl + profession + household_size + dri_lic + num_cars + exp_lvl + self_drive + other_drive + pub_trans + bicycle + walking + tourist_envi + road_envi
+
+sati_lvl ~ gender + age + residence + income + edu_lvl + profession + household_size + dri_lic + num_cars + exp_lvl + self_drive + other_drive + pub_trans + bicycle + walking + tourist_envi + road_envi
+sati_lvl ~ frequency_travel + daily_d
+
+# Correlations
+r_envi1 ~~ r_envi2
+exp_lvl ~~ tourist_envi
+ta_envi1 ~~ ta_envi2
+ta_envi5 ~~ ta_envi6
+
+# # Indirect effects
+# sati_lvl ~ ind1*tourist_envi
+# sati_lvl ~ ind2*road_envi
+# sati_lvl ~ ind3*exp_lvl
+# sati_lvl ~ ind4*self_drive
+# sati_lvl ~ ind5*other_drive
+# sati_lvl ~ ind6*pub_trans
+# sati_lvl ~ ind7*bicycle
+# sati_lvl ~ ind8*walking
+# sati_lvl ~ ind9*gender
+# sati_lvl ~ ind10*age
+# sati_lvl ~ ind11*residence
+# sati_lvl ~ ind12*income
+# sati_lvl ~ ind13*edu_lvl
+# sati_lvl ~ ind14*profession
+# sati_lvl ~ ind15*household_size
+# sati_lvl ~ ind16*dri_lic
+# sati_lvl ~ ind17*num_cars
+'
+
+# Fit the model
+fit_sem <- sem(model, data = TBQT, estimator = "MLR", std.lv = TRUE, missing = "ml")
+
+# Model summary
+fitMeasures(fit_sem, c("rmsea", "cfi", "tli", "chisq", "df"))
+
+sem_summary <- summary(fit_sem, fit.measures = TRUE, standardized = TRUE, modindices = TRUE)
+print(sem_summary)
+
+modificationindices(fit_sem, minimum.value = 10)
+
+
+```
+
+
+---
+
+
+\TeX\ is the best way to typeset mathematics. Donald Knuth designed \TeX\ when he got frustrated at how long it was taking the typesetters to finish his book, which contained a lot of mathematics.  One nice feature of _R Markdown_ is its ability to read LaTeX code directly.
+
+If you are doing a thesis that will involve lots of math, you will want to read the following section which has been commented out. If you're not going to use math, skip over or delete this next commented section.
+
+
+<!-- MATH and PHYSICS majors: Uncomment the following section -->
+$$
+\sum_{j=1}^n (\delta\theta_j)^2 \leq {{\beta_i^2}\over{\delta_i^2 + \rho_i^2}}
+\left[ 2\rho_i^2 + {\delta_i^2\beta_i^2\over{\delta_i^2 + \rho_i^2}} \right] \equiv \omega_i^2
+$$
+
+From Informational Dynamics, we have the following (Dave Braden):
+<!--
+
+After _n_ such encounters the posterior density for $\theta$ is
+
+$$
+\pi(\theta|X_1< y_1,\dots,X_n<y_n) \varpropto \pi(\theta) \prod_{i=1}^n\int_{-\infty}^{y_i}
+   \exp\left(-{(x-\theta)^2\over{2\sigma^2}}\right)\ dx
+$$
+
+Another equation:
+
+$$
+\det\left|\,\begin{matrix}%
+c_0&c_1\hfill&c_2\hfill&\ldots&c_n\hfill\cr
+c_1&c_2\hfill&c_3\hfill&\ldots&c_{n+1}\hfill\cr
+c_2&c_3\hfill&c_4\hfill&\ldots&c_{n+2}\hfill\cr
+\,\vdots\hfill&\,\vdots\hfill&
+  \,\vdots\hfill&&\,\vdots\hfill\cr
+c_n&c_{n+1}\hfill&c_{n+2}\hfill&\ldots&c_{2n}\hfill\cr
+\end{matrix}\right|>0
+$$
+
+
+Lapidus and Pindar, Numerical Solution of Partial Differential Equations in Science and
+Engineering.  Page 54
+
+$$
+\int_t\left\{\sum_{j=1}^3 T_j \left({d\phi_j\over dt}+k\phi_j\right)-kT_e\right\}w_i(t)\ dt=0,
+   \qquad\quad i=1,2,3.
+$$
+
+L\&P  Galerkin method weighting functions.  Page 55
+
+$$
+\sum_{j=1}^3 T_j\int_0^1\left\{{d\phi_j\over dt} + k\phi_j\right\} \phi_i\ dt
+   = \int_{0}^1k\,T_e\phi_idt, \qquad i=1,2,3 
+$$
+
+Another L\&P (p145)
+
+$$
+\int_{-1}^1\!\int_{-1}^1\!\int_{-1}^1 f\big(\xi,\eta,\zeta\big)
+   = \sum_{k=1}^n\sum_{j=1}^n\sum_{i=1}^n w_i w_j w_k f\big( \xi,\eta,\zeta\big).
+$$
+
+Another L\&P (p126)
+
+$$
+\int_{A_e} (\,\cdot\,) dx dy = \int_{-1}^1\!\int_{-1}^1 (\,\cdot\,) \det[J] d\xi d\eta.
+$$
+
+\begin{equation}
+  \mathrm{C_6H_{12}O_6  + 6O_2} \longrightarrow \mathrm{6CO_2 + 6H_2O}
+  (\#eq:reaction)
+\end{equation}
+
+We can reference this combustion of glucose reaction via Equation \@ref(eq:reaction).
+
+### Other examples of reactions
+
+$\mathrm{NH_4Cl_{(s)}}$ $\rightleftharpoons$ $\mathrm{NH_{3(g)}+HCl_{(g)}}$
+
+\noindent $\mathrm{MeCH_2Br + Mg}$ $\xrightarrow[below]{above}$ $\mathrm{MeCH_2\bullet Mg \bullet Br}$
+
+-->
+
+## Physics
+
+Many of the symbols you will need can be found on the math page <https://web.reed.edu/cis/help/latex/math.html> and the Comprehensive LaTeX Symbol Guide (<https://mirror.utexas.edu/ctan/info/symbols/comprehensive/symbols-letter.pdf>).
+
+## Biology
+
+You will probably find the resources at <https://www.lecb.ncifcrf.gov/~toms/latex.html> helpful, particularly the links to bsts for various journals. You may also be interested in TeXShade for nucleotide typesetting (<https://homepages.uni-tuebingen.de/beitz/txe.html>).  Be sure to read the proceeding chapter on graphics and tables.
+
