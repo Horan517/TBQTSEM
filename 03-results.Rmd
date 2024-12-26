@@ -1,8 +1,42 @@
-# Conclusion {-}
+# Results {#rmd-basics}
 
-If we don't want Conclusion to have a chapter number next to it, we can add the `{-}` attribute.
+## CFA Results
 
-**More info**
+Confirmatory Factor Analysis (CFA) is performed at first to detect if the model can build "perceived tourist attraction environment" and "perceived road environment" as two latent variables. The method models how a set of observed variables relates to one or more latent variables.
 
-And here's some other random info: the first paragraph after a chapter title or section head _shouldn't be_ indented, because indents are to tell the reader that you're starting a new paragraph. Since that's obvious after a chapter or section title, proper typesetting doesn't add an indent there.
+According to CFA results (\ref{tab:cfa}), model fit is relatively acceptable. The significant Chi-Square test (p < 0.001) is not unexpected given the large sample size (n = 814). The SRMR (0.040) indicates a good fit, and the CFI (0.926) and TLI (0.905) are close to the acceptable threshold of 0.90, suggesting a moderately acceptable fit overall. However, the RMSEA (0.094) exceeds the typical cutoff of 0.08, meaning that there could be refinements about constructing the two latent variables.
 
+```{r, include = FALSE}
+# create a data frame for the model fit indices
+fit_indices.df <- data.frame(
+  Index = c("Chi-Square", "Degrees of Freedom", "P-value (Chi-square)", 
+            "CFI", "TLI", "RMSEA", "P-value RMSEA <= 0.05", "SRMR"),
+  Value = c(352.570, 43, "<0.001", 
+            0.926, 0.905, 0.094, 
+            0.000, 0.040),
+  Standard = c(
+    "-",
+    "-",
+    "> 0.05",
+    "≥ 0.90 (acceptable)",
+    "≥ 0.90 (acceptable)",
+    "< 0.08 (acceptable)",
+    "> 0.05",
+    "< 0.08 (acceptable)"
+  )
+)
+
+kable(fit_indices.df,
+      booktabs = TRUE,
+      col.names = c("Index", "Value", "Standard"),
+      caption = "\\label{tab:cfa} CFA model fit results: Travel Environment variables") %>%
+  kable_styling(full_width = FALSE, position = "center")
+```
+
+Regarding parameter estimates,  show that the observed variables load strongly onto their respective latent variables, indicating good measurement properties. For the **perceived tourist attraction environment** latent variable, loadings range from **0.601 to 0.723** (standardized), with `ta_envi2`, `ta_envi3`, and `ta_envi4` showing the strongest relationships. Similarly, for the **perceived road environment** latent variable, loadings are consistently high, ranging from **0.686 to 0.888** (standardized), with `r_envi4` and `r_envi3` being the most strongly associated indicators.
+
+The covariance between the two latent variables is significant (estimate = 0.042, p = 0.001), suggesting a moderate correlation (**standardized = 0.136**) between perceptions of tourist attraction environments and road environments. This indicates that individuals who perceive tourist attractions favorably also tend to rate road environments positively.
+
+
+
+## SEM Results

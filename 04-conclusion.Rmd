@@ -1,8 +1,11 @@
 # Conclusion {-}
 
-If we don't want Conclusion to have a chapter number next to it, we can add the `{-}` attribute.
+The study probes into ...
 
-**More info**
+The innovative highlights of the study would be using SEM modeling to comprehensively incorporate all relevant factors that could impact travel satisfaction. While it focused on the perspectives of tourism traveling instead of work commuting, a travel activity that has been well researched and concentrated on. Meanwhile, the study supplements the vacancy of similar travel behavior related studies conducted on a plateau area, as most focuses on cities of low altitude.
 
-And here's some other random info: the first paragraph after a chapter title or section head _shouldn't be_ indented, because indents are to tell the reader that you're starting a new paragraph. Since that's obvious after a chapter or section title, proper typesetting doesn't add an indent there.
+There are also some aspects this article can be further improved: 1) if conducting follow-up survey or new survey projects targeted at travel satisfaction, the more standardized and official survey scale, such as Satisfaction with Travel Scale (STS) by @Ettema2011, could be used; 2) objective and measurable traveling time, distance, and road infrastructure geo-spatial data could be calculated and added into this study, however, it is true that such data might not be easy to obtain due to harsh natural environments and governments' privacy concerns; 3) Could further dig into the dynamic intersecting influences between variables by performing multiple-group models using variables such as residence, profession, or travel modes.
+
+
+
 

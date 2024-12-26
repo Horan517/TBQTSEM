@@ -73,6 +73,46 @@ singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespac
 %----------------------------------------------------------------------------------------
 %	Highlight Code Chunks
 %----------------------------------------------------------------------------------------
+  \usepackage{color}
+  \usepackage{fancyvrb}
+  \newcommand{\VerbBar}{|}
+  \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+  % Add ',fontsize=\small' for more characters per line
+  \usepackage{framed}
+  \definecolor{shadecolor}{RGB}{248,248,248}
+  \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+  \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+  \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+  \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+  \newcommand{\BuiltInTok}[1]{#1}
+  \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+  \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+  \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+  \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+  \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+  \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+  \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+  \newcommand{\ExtensionTok}[1]{#1}
+  \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+  \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+  \newcommand{\ImportTok}[1]{#1}
+  \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+  \newcommand{\NormalTok}[1]{#1}
+  \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+  \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+  \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+  \newcommand{\RegionMarkerTok}[1]{#1}
+  \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+  \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+  \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+  \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+  \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+  \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 
 %----------------------------------------------------------------------------------------
 % Handling Citations
@@ -237,7 +277,7 @@ singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespac
 
 \vspace*{0.2\textheight}
 
-\noindent{\itshape Hope 2025 is better.}\bigbreak
+\noindent{\itshape Hope in 2025 you can code more, better, and with confidence.}\bigbreak
 
 \hfill\textemdash Haoran
 
@@ -311,7 +351,7 @@ This paper is the final project work for course GEOG712. It ueses a
 
   \begin{acknowledgements}
   \addchaptertocentry{\acknowledgementname} % Add the acknowledgments to the table of contents
-    I want to thank Dr.~Huaxiong Jiang and \ldots{} for. And for Dr.~Antonio Paez for leading me into learning R and using Github for the first time. I had long been afraid and at practicing, but thankfully this course proved to be worthwhile.
+    I would like to thank Dr.~Huaxiong Jiang and my undergrad fellows in old days for helping me with research design and questionnaire distributing. I would also like to thank Dr.~Antonio Paez for teaching this course and guiding me throughout the whole semester to learn from scratch about R and Github. With limited coding experiences before, I had been exposed to a lot of new ideas and thoughts on doing research itself. Mostly importantly, I am glad that I got to have the chance to build my own coding space little by little through detailed instructions, and that I could have little more confidence in coding skills instead of anxiety and upset. Anyways, this course surely would shed a very important light in my subsequent years of pursuing a PhD and a possible academic career.
   \end{acknowledgements}
 \blankpage
 \clearpage
@@ -373,116 +413,118 @@ But mostly I had fun.
 
 Placeholder
 
-\chapter{Introduction and Background}\label{introduction-and-background}
+\chapter{Introduction and Background}\label{rmd-basics}
 
 \section{Introduction}\label{introduction}
 
-The study area, Qinghai-Tibet Plateau, or referred to as Tibetan Plateau, is situated in the western region of China and characterized by its high altitude averaging over 4,000 meters. Due to its low population density and an extremely alpine climate, it exhibits a unique set of travel behavioral patterns for local residents or outside tourists. Furthermore, in recent years, the plateau has witnessed rapid infrastructural development invested by Chinese government, and a significant surge in tourist influx. Despite this growth, scholarly investigations into travel behaviors, satisfaction levels, and the broader implications of these developments on local and visiting populations remain scant.
+Subjective well-being is the psychological assessment of people's lives, including their emotional response to incidents and cognitive perceptions on life quality (Diener, 2000). The shift of well-being assessment from merely evaluating objective elements (wealth etc.) to incorporating multiple subjective indicators of assessment occurs in recent times as previous methods fail to determine the quality of life (De Vos, 2019; McCabe \& Johnson, 2013).
 
-\chapter{R Markdown Basics --\textgreater{} Introduction}\label{rmd-basics}
+The relationships of tourism and SWB has been an emerging interest for many scholars to dig into. There are firm evidence that indicates tourism generally contributes to social tourists' well-being (McCabe \& Johnson, 2013). Scholars often use two-step surveys to explore the effect outdoor travel has on well-being improvement. Whilst another line of research focuses on the intrinsic mechanisms of the relationship, probing into how possible factors of tourism like built environment and travel behavior affect trip satisfaction and its internal interaction effects (Carneiro \& Eusébio, 2019). While among the varied indicators of detecting respondents' SWB, satisfaction is an effective factor to represent people's perceived subjective feeling towards a either short or long activity{[}Chen2019{]}.
 
-Here is a brief introduction into using \emph{R Markdown}. \emph{Markdown} is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. \emph{R Markdown} provides the flexibility of \emph{Markdown} with the implementation of \textbf{R} input and output. For more details on using \emph{R Markdown} see \url{https://rmarkdown.rstudio.com}.
+This study digs into the relationships between travel satisfaction and other factors such as travel modes, travel frequency, travel distance and tourists' perceived tourist attraction environment and road environment. The core research questions is: what kind of factors would greatly impact local and non-local tourists' travel behavior and their travel satisfaction on Qinghai-Tibet Plateau.
 
-Be careful with your spacing in \emph{Markdown} documents. While whitespace largely is ignored, it does at times give \emph{Markdown} signals as to how to proceed. As a habit, try to keep everything left aligned whenever possible, especially as you type a new paragraph. In other words, there is no need to indent basic text in the Rmd document (in fact, it might cause your text to do funny things if you do).
+\chapter{Data \& Methodology}\label{rmd-basics}
 
-Here is a reference to Angel (2000).
+\section{Study Area and Data Collection}\label{study-area-and-data-collection}
 
-\section{Writing}\label{writing}
+The study area, Qinghai-Tibet Plateau, or referred to as Tibetan Plateau, is situated in the western region of China and characterized by its high altitude averaging over 4,000 meters. Due to its low population density and an extremely alpine climate, it exhibits a unique set of travel behavioral patterns for local residents or outside tourists. Furthermore, in recent years, the plateau has witnessed rapid infrastructural development invested by Chinese government, and a significant surge in tourist influx (Gao \& Sun, 2021). Despite this growth, scholarly investigations into travel behaviors, satisfaction levels, and the broader implications of these developments on local and visiting populations remain scant.
 
-You can use \texttt{R} code in your document. For example:
-
-`\texttt{markdown}\{r ch1-load-packages, message=FALSE\}
-plot(cars)
-```
-
-Naming the code chunks is convenient for navigating your document. You can use chunk options to control what the code does and how it is displayed. See Yihui Xie's documentation about chunk options \url{https://yihui.org/knitr/options/}. In the chunk above \texttt{message=FALSE} forces the chunk to not display messages when the packages are loaded.
-
-Of course, unless you are explicitly illustrating/discussing the code, you might not want the code to appear in the thesis! As another example, a chunk would \emph{not} be displayed \emph{at all} in the output document if \texttt{echo=FALSE}.
-
-You can create elegant figures and tables using \texttt{R} and displaying them in your thesis.
-
-Figure \ref{fig:ch1-scatterplot} is an example of a figure generated using the package \texttt{ggplot}.
+The questionnaire-collecting process started both online and on-site in July of 2022. The online questionnaires were written on the cover page that only those who had ever been to Qinghai-Tibet Plateau were qualified to fill out them. Then followed by was the on-site questionnaire-distributing process along with the Second Tibetan Plateau Scientific Expedition and Research Program during late July to early August. To specifically target at tourists while considering the convenience of conducting investigation, we mainly chose four touristic sites to collect questionnaires along the expedition route. Eventually, we collected 729 on-site questionnaires, which were acquired mostly in four sites - Qinghai Province Museum in Xining City, Qinghai Lake Scenic Area, Dachaidan Emerald Lake Scenic Area, Mani Stone Mound Scenic Area in Yushu City (Figure \ref{fig:SampleLocations}). With a total number of 830 questionnaires, 16 were filtered out due to a lot of missing answers, leaving 814 eventually entering modeling phase, with an validity rate of 98.07\%.
 
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{thesis_files/figure-latex/ch1-scatterplot-1} \caption{\label{fig:ch1-scatterplot}Example of a scatterplot}\label{fig:ch1-scatterplot}
+\includegraphics[width=0.8\linewidth]{figure/SampleLocations} \caption{\label{fig:SampleLocations}Sampling Locations on the Qinghai-Tibet Plateau}\label{fig:fig1-sample-locations}
 \end{figure}
-
-Table \ref{tab:summary-statistics} is an example of a table created using the package \texttt{kableExtra}.
-
-\begin{table}
-
-\caption{\label{tab:ch1-table}\label{tab:summary-statistics}Example of a table with summary statistics}
-\centering
-\begin{tabular}[t]{llll}
-\toprule
-  &     displ &      year &      cyl\\
-\midrule
- & Min.   :1.600 & Min.   :1999 & Min.   :4.000\\
- & 1st Qu.:2.400 & 1st Qu.:1999 & 1st Qu.:4.000\\
- & Median :3.300 & Median :2004 & Median :6.000\\
- & Mean   :3.472 & Mean   :2004 & Mean   :5.889\\
- & 3rd Qu.:4.600 & 3rd Qu.:2008 & 3rd Qu.:8.000\\
-\addlinespace
- & Max.   :7.000 & Max.   :2008 & Max.   :8.000\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Table \ref{tab:summary-statistics-2} is the same as Table \ref{tab:summary-statistics}, but placed in landscape orientation. Landscape orientation is useful for wide tables or for large figures.
-
-\newpage
-\blandscape
-
-\begin{table}
-
-\caption{\label{tab:ch1-table-2}\label{tab:summary-statistics-2}Example of a table in a landscape page}
-\centering
-\begin{tabular}[t]{llll}
-\toprule
-  &     displ &      year &      cyl\\
-\midrule
- & Min.   :1.600 & Min.   :1999 & Min.   :4.000\\
- & 1st Qu.:2.400 & 1st Qu.:1999 & 1st Qu.:4.000\\
- & Median :3.300 & Median :2004 & Median :6.000\\
- & Mean   :3.472 & Mean   :2004 & Mean   :5.889\\
- & 3rd Qu.:4.600 & 3rd Qu.:2008 & 3rd Qu.:8.000\\
-\addlinespace
- & Max.   :7.000 & Max.   :2008 & Max.   :8.000\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\elandscape
-\newpage
-
-\chapter{Data \& Methodology}\label{math-sci}
-
-Placeholder
-
-\section{Data Collection}\label{data-collection}
 
 \section{Variables}\label{variables}
 
+The survey was originally designed in the contexts of assessing smart transportation within the Qinghai-Tibet Plateau, which contains multifaceted aspects spanning from travel behavior, travel perceptions to technology adoption and usage. This study focuses only on several key dimensions, which are tourist travel behavior, their perceived travel environment, travel satisfaction, and their socio-demograpical characteristics.
+
+The complete questionnaire (originally in Chinese and translated in English) alongside with data cleaning and re-digitalizing is stored in \texttt{TravelBehaviorQinghaiData} \href{https://github.com/Horan517/TravelBehaviorQinghaiData}{package}.
+
+Specifically, socio-demograpical variables include gender, age, residence, personal monthly income, education level, profession, household size and ownership of driving license. Travel behavior variables in this model include frequency of traveling to Qinghai-Tibet Plateau in the past year and average daily traveling distance during the trip people were having when filling the questionnaire. Travel expectation and travel satisfaction are also measured, using a 5-point Likert scale ranging from strongly agree (value = 5) to strongly disagree (value = 1). Lastly, travel environment variables include two latent variables - people's perceptions of the environment of tourist attractions and the environment of roads along the trip, with the first consisting of 6 questions and the latter consisting of 5 questions.
+
 \section{Methodology}\label{methodology}
+
+Structural Equation Model (SEM) was used in the study to entangle the complex relationships across different variables. According to Bollen (1989), SEM is able to simultaneously estimate the causal relationships among a set of observed variables based on a specified model. In addition, SEM can calculate the indirect effects between two variables, mediated by other intervening variables (Hayes, 2009), which would help unravel the mediating effects of perceived travel environment had on travel satisfaction through travel behavior.
 
 \section{Model Construction}\label{model-construction}
 
-\subsection{Other examples of reactions}\label{other-examples-of-reactions}
+The conceptual framework of SEM model is shown in \ref{fig:}. Both direct and indirect pathways are drawn and measured, but only one model - a single-group model consisting of all observations, is measured in this model paper. A multi-group modelling approach (setting residence as a grouping variable) was previously used to compare the differences between local tourists and non-local tourists in the project. But in this model paper due to time constraints I did not incoporate the multi-group modelling analysis.
 
-\section{Physics}\label{physics}
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{figure/conceptual_framework} \caption{\label{fig:conceptual_framework} Conceptual Framework}\label{fig:fig2-conceptual-frmework}
+\end{figure}
 
-\section{Biology}\label{biology}
+\section{Modeling}\label{modeling}
+
+Below, confirmatory Factor Analysis (CFA) model and Structural Equation Modeling (SEM) model are respectively defined and measured.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Define the CFA model}
+\NormalTok{cfa\_model }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}}
+\StringTok{\# Measurement model}
+\StringTok{tourist\_envi =\textasciitilde{} ta\_envi1 + ta\_envi2 + ta\_envi3 + ta\_envi4 + ta\_envi5 + ta\_envi6}
+\StringTok{road\_envi =\textasciitilde{} r\_envi1 + r\_envi2 + r\_envi3 + r\_envi4 + r\_envi5}
+\StringTok{\textquotesingle{}}
+
+\CommentTok{\# Fit the model}
+\NormalTok{fit\_cfa }\OtherTok{\textless{}{-}} \FunctionTok{cfa}\NormalTok{(cfa\_model, }\AttributeTok{data =}\NormalTok{ TBQT, }\AttributeTok{missing =} \StringTok{"ml"}\NormalTok{)}
+
+\CommentTok{\# Model summary}
+\NormalTok{cfa\_summary }\OtherTok{\textless{}{-}} \FunctionTok{summary}\NormalTok{(fit\_cfa, }\AttributeTok{fit.measures =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Define the SEM model}
+\NormalTok{model }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}}
+\StringTok{\# Measurement model}
+\StringTok{tourist\_envi =\textasciitilde{} ta\_envi1 + ta\_envi2 + ta\_envi3 + ta\_envi4 + ta\_envi5 + ta\_envi6}
+\StringTok{road\_envi =\textasciitilde{} r\_envi1 + r\_envi2 + r\_envi3 + r\_envi4 + r\_envi5}
+
+\StringTok{\# Structural model}
+\StringTok{frequency\_travel \textasciitilde{} gender + age + residence + income + edu\_lvl + profession + household\_size + dri\_lic + num\_cars + exp\_lvl + self\_drive + other\_drive + pub\_trans + bicycle + walking + tourist\_envi + road\_envi}
+\StringTok{daily\_d \textasciitilde{} gender + age + residence + income + edu\_lvl + profession + household\_size + dri\_lic + num\_cars + exp\_lvl + self\_drive + other\_drive + pub\_trans + bicycle + walking + tourist\_envi + road\_envi}
+
+\StringTok{sati\_lvl \textasciitilde{} gender + age + residence + income + edu\_lvl + profession + household\_size + dri\_lic + num\_cars + exp\_lvl + self\_drive + other\_drive + pub\_trans + bicycle + walking + tourist\_envi + road\_envi}
+\StringTok{sati\_lvl \textasciitilde{} frequency\_travel + daily\_d}
+
+\StringTok{\# Correlations}
+\StringTok{r\_envi1 \textasciitilde{}\textasciitilde{} r\_envi2}
+\StringTok{exp\_lvl \textasciitilde{}\textasciitilde{} tourist\_envi}
+\StringTok{ta\_envi1 \textasciitilde{}\textasciitilde{} ta\_envi2}
+\StringTok{ta\_envi5 \textasciitilde{}\textasciitilde{} ta\_envi6}
+\StringTok{\textquotesingle{}}
+
+\CommentTok{\# Fit the model}
+\NormalTok{fit\_sem }\OtherTok{\textless{}{-}} \FunctionTok{sem}\NormalTok{(model, }\AttributeTok{data =}\NormalTok{ TBQT, }\AttributeTok{estimator =} \StringTok{"MLR"}\NormalTok{, }\AttributeTok{std.lv =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{missing =} \StringTok{"ml"}\NormalTok{)}
+\CommentTok{\# case{-}wise (or ‘full information’) maximum likelihood estimation (setting \textasciigrave{}\textasciigrave{}) cannot be used if using "WLSMV" to treat the problem of categorical endogenous variales.}
+
+\CommentTok{\# Model summary}
+\FunctionTok{fitMeasures}\NormalTok{(fit\_sem, }\FunctionTok{c}\NormalTok{(}\StringTok{"rmsea"}\NormalTok{, }\StringTok{"cfi"}\NormalTok{, }\StringTok{"tli"}\NormalTok{, }\StringTok{"chisq"}\NormalTok{, }\StringTok{"df"}\NormalTok{))}
+\NormalTok{sem\_summary }\OtherTok{\textless{}{-}} \FunctionTok{summary}\NormalTok{(fit\_sem, }\AttributeTok{fit.measures =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{standardized =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{modindices =} \ConstantTok{TRUE}\NormalTok{)}
+
+\NormalTok{mi }\OtherTok{\textless{}{-}} \FunctionTok{modindices}\NormalTok{(fit\_sem, }\AttributeTok{sort =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{maximum.number =} \DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+As all of the variables in the model are categorical variables (either binary, categorical or ordinal), \texttt{lavaan} package only need to maintain the types of these categorical variables as \texttt{numeric} to deal with exogenous categorical variables. For endogenous variables, the ideal way is to set it as \texttt{ordered}, however, since the Full Information Maximum Likelihood method of dealing with missing value cannot deal with categorical variable. Therefore, I prioritized using Maximum Likelihood with Robust Standard Errors (MLR) estimator with setting \texttt{missing\ =\ "ml"} to deal with missing values.
+
+For iterations, as the iterations control is already built into the \texttt{lavaan} package, it will automatically iterate until convergence. Regarding bootstrapping strategy, it helps to deal with data non-normality problem and to test indirect effects by estimating bias-corrected confidence intervals (CI). This method should be tested with trials, yet due to time constraints, it is not included in this model paper.
+
+\chapter{Results}\label{rmd-basics}
+
+Placeholder
+
+\section{Statistical Results}\label{statistical-results}
+
+\section{CFA Results}\label{cfa-results}
+
+\section{SEM Results}\label{sem-results}
 
 \chapter*{Conclusion}\label{conclusion}
-\addcontentsline{toc}{chapter}{Conclusion}
-
-If we don't want Conclusion to have a chapter number next to it, we can add the \texttt{\{-\}} attribute.
-
-\textbf{More info}
-
-And here's some other random info: the first paragraph after a chapter title or section head \emph{shouldn't be} indented, because indents are to tell the reader that you're starting a new paragraph. Since that's obvious after a chapter or section title, proper typesetting doesn't add an indent there.
-
-\chapter*{Conclusion}\label{conclusion-1}
 \addcontentsline{toc}{chapter}{Conclusion}
 
 If we don't want Conclusion to have a chapter number next to it, we can add the \texttt{\{-\}} attribute.
@@ -496,10 +538,32 @@ And here's some other random info: the first paragraph after a chapter title or 
 
 Placeholder
 
+\chapter{TBQTSEM}\label{tbqtsem}
+
+Placeholder
+
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
-\bibitem[\citeproctext]{ref-angel2000}
-Angel, E. (2000). \emph{Interactive computer graphics : A top-down approach with OpenGL}. Boston, MA: Addison Wesley Longman.
+\bibitem[\citeproctext]{ref-Bollen1989}
+Bollen, K. A. (1989). Structural equation models with observed variables. In \emph{Structural equations with latent variables} (pp. 80--150). John Wiley \& Sons, Ltd. http://doi.org/\href{https://doi.org/10.1002/9781118619179.ch4}{10.1002/9781118619179.ch4}
+
+\bibitem[\citeproctext]{ref-Carneiro2019}
+Carneiro, M. J., \& Eusébio, C. (2019). Factors influencing the impact of tourism on happiness. \emph{Anatolia}, \emph{30}(4), 475--496. http://doi.org/\href{https://doi.org/10.1080/13032917.2019.1632909}{10.1080/13032917.2019.1632909}
+
+\bibitem[\citeproctext]{ref-DeVos2019}
+De Vos, J. (2019). Analysing the effect of trip satisfaction on satisfaction with the leisure activity at the destination of the trip, in relationship with life satisfaction. \emph{Transportation}, \emph{46}, 623--645. http://doi.org/\href{https://doi.org/10.1007/s11116-017-9812-0}{10.1007/s11116-017-9812-0}
+
+\bibitem[\citeproctext]{ref-Diener2000}
+Diener, E. (2000). Subjective well-being: The science of happiness and a proposal for a national index. \emph{American Psychologist}, \emph{55}(1), 34--43.
+
+\bibitem[\citeproctext]{ref-Gao2021}
+Gao, X., \& Sun, D. (2021). Transport accessibility and social demand: A case study of the tibetan plateau. \emph{PLOS ONE}, \emph{16}(9), e0257028. http://doi.org/\href{https://doi.org/10.1371/journal.pone.0257028}{10.1371/journal.pone.0257028}
+
+\bibitem[\citeproctext]{ref-Hayes2009}
+Hayes, A. F. (2009). Beyond baron and kenny: Statistical mediation analysis in the new millennium. \emph{Communication Monographs}, \emph{76}(4), 408--420. http://doi.org/\href{https://doi.org/10.1080/03637750903310360}{10.1080/03637750903310360}
+
+\bibitem[\citeproctext]{ref-McCabe2013}
+McCabe, S., \& Johnson, S. (2013). The happiness factor in tourism: Subjective well-being and social tourism. \emph{Annals of Tourism Research}, \emph{41}, 42--65. http://doi.org/\href{https://doi.org/10.1016/j.annals.2012.12.001}{10.1016/j.annals.2012.12.001}
 
 \end{CSLReferences}
 
