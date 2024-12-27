@@ -19,13 +19,9 @@ output:
   keep_tex: true
 
 lay_abstract: |
-  The lay abstract must be 150 words or less.
-  Hi this is the lay abstract.
-  
-  It must explain the key goals and contributions of the thesis in lay terms that are accessible to the general public. 
+  This r project `TravelBehaviorQinghai` is created by first-year PhD student Haoran Xu to produce a model paper for the final course project of "GEOG712 - Reproducible Research Workflow", taught by Dr. Antonio Paez at McMaster University, Canada.
 abstract: |
-  This paper is the final project work for course GEOG712. It ueses a 
-# Note that a tab is needed on the line after the `|`. Subsequent paragraphs need to be indented too.
+  The study probes into how factors as travel behavior and perceived travel environment can influence tourists' travel satisfaction on Qinghai-Tibet Pleateau. The single-group SEM analysis conducted in this model peper revealed mixed effects across different pathways. Perceived tourist attraction environment significantly influenced travel satisfaction, while perceived road environment had no notable direct effect. Mediating effects showed that better tourist site conditions led to longer daily travel distances, whereas worse road conditions reduced travel distance. Travel modes exhibited minimal direct effects on satisfaction, with walking positively contributing and car driving by others showing the largest negative impact. Regarding travel behavior, frequency of travel to the Qinghai-Tibet Plateau had a minor positive effect on satisfaction, although insignificant, and daily travel distance showed no direct association.
 acknowledgements: |
   I would like to thank Dr. Huaxiong Jiang and my undergrad fellows in old days for helping me with research design and questionnaire distributing. I would also like to thank Dr. Antonio Paez for teaching this course and guiding me throughout the whole semester to learn from scratch about R and Github. With limited coding experiences before, I had been exposed to a lot of new ideas and thoughts on doing research itself. Mostly importantly, I am glad that I got to have the chance to build my own coding space little by little through detailed instructions, and that I could have little more confidence in coding skills instead of anxiety and upset. Anyways, this course surely would shed a very important light in my subsequent years of pursuing a PhD and a possible academic career.
 declarations: |
@@ -62,12 +58,15 @@ library(macdown)
 
 This r project `TravelBehaviorQinghai` is created by first-year PhD student [Haoran Xu](https://github.com/Horan517) to produce a model paper for the final course project of ["GEOG712 - Reproducible Research Workflow"](https://github.com/paezha/Reproducible-Research-Workflow/tree/master), taught by [Dr. Antonio Paez](https://experts.mcmaster.ca/display/paezha) at McMaster University, Canada.
 
-The paper is titled "Assessing the influence of tourists’ perceived travel environment and their travel behavior on travel satisfaction using structural equation models (SEM): a case of Qinghai-Tibet Plateau", and stems from a half-way done research project in collaboration with [Dr. Huaxiong Jiang](https://www.researchgate.net/scientific-contributions/Huaxiong-Jiang-2157090528) starting from Jun, 2022 from [Beijing Normal Universtiy, China](https://english.bnu.edu.cn/). 
+The paper is titled "Assessing the influence of tourists’ perceived travel environment and their travel behavior on travel satisfaction using structural equation models (SEM): a case of Qinghai-Tibet Plateau", and stems from a half-way done research project in collaboration with [Dr. Huaxiong Jiang](https://www.researchgate.net/scientific-contributions/Huaxiong-Jiang-2157090528) starting from Jun, 2022 from [Beijing Normal Universtiy, China](https://english.bnu.edu.cn/).
+
 The project paused since March of 2023 due to lack of time and energy investment. Therefore, I am taking the chance of this course project to review and re-arrange the previous work I had done nearly two years ago. Main work I did for this course project include:
   
-  - developing an r package using the existing dataset of Excel format, transforming it into reproducible, open-sourced, and well-cleaned .rda format dataset.
-  - using r package [lavaan](https://lavaan.ugent.be/) to reproduce the [Structural Equations Modeling](https://en.wikipedia.org/wiki/Structural_equation_modeling) (SEM) method, which was previously constructed and performed with [mplus](https://www.statmodel.com/), a commercial software.
-  - writing a model article in r studio using latex syntax, practicing several r packages such as `tidyverse`, `kableExtra`, and `macdown`.
+  - developing an r package called ["TravelBehaviorQinghaiData"](https://github.com/Horan517/TravelBehaviorQinghaiData) using existing data in Excel format, transforming it into reproducible, open-sourced, and well-cleaned .rda format data.
+  - using r package [lavaan](https://lavaan.ugent.be/) to reproduce the [Structural Equations Modeling](https://en.wikipedia.org/wiki/Structural_equation_modeling) (SEM) method, which was previously constructed and performed in a commercial software called [mplus](https://www.statmodel.com/).
+  - first time writing a model article in r studio using latex syntax, in which I practiced several r packages such as `tidyverse`, `kableExtra`, and `macdown`, [a template for writing a McMaster graduate thesis](https://github.com/paezha/macdown?tab=readme-ov-file).
+
+Citing format: Xu, H. (2024). TBQTSEM: a model paper of "Assessing the influence of tourists’ perceived travel environment and their travel behavior on travel satisfaction using structural equation models (SEM): a case of Qinghai-Tibet Plateau". https://github.com/Horan517/TBQTSEM
 
 ```{r eval=!knitr::is_latex_output(), child=here::here("01-chap1.Rmd")}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.25)  26 DEC 2024 11:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.25)  27 DEC 2024 09:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -709,6 +709,15 @@ LaTeX Warning: Label `rmd-basics' multiply defined.
 
 LaTeX Warning: Label `rmd-basics' multiply defined.
 
+
+LaTeX Warning: Label `tab:cfa-model-fit' multiply defined.
+
+
+LaTeX Warning: Label `tab:sem-model-fit' multiply defined.
+
+
+LaTeX Warning: Label `tab:sem-loadings' multiply defined.
+
 )
 \openout1 = `thesis.aux'.
 
@@ -818,6 +827,10 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 
 
 ]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 329.
+(/Users/horanxu/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
 
 [3
 
@@ -906,18 +919,13 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 [9
 
 ]
-Chapter 1.
---------------------
- Doctor of Philosophy-- Haoran Xu; McMaster University-- School of Earth, Environment and Society
---------------------
-
 
 [1
 
 
 
 ]
-Chapter 2.
+Chapter 1.
 --------------------
  Doctor of Philosophy-- Haoran Xu; McMaster University-- School of Earth, Environment and Society
 --------------------
@@ -926,128 +934,156 @@ Chapter 2.
 [2
 
 ]
-Chapter 3.
+Chapter 2.
 --------------------
  Doctor of Philosophy-- Haoran Xu; McMaster University-- School of Earth, Environment and Society
 --------------------
-<figure/SampleLocations.jpg, id=201, 2484.28125pt x 1755.55875pt>
+<figure/SampleLocations.jpg, id=240, 2484.28125pt x 1755.55875pt>
 File: figure/SampleLocations.jpg Graphic file (type jpg)
 <use figure/SampleLocations.jpg>
-Package pdftex.def Info: figure/SampleLocations.jpg  used on input line 435.
+Package pdftex.def Info: figure/SampleLocations.jpg  used on input line 450.
 (pdftex.def)             Requested size: 334.60562pt x 236.45445pt.
 
 
 [3
 
 ]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 442.
-(/Users/horanxu/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-Underfull \hbox (badness 10000) in paragraph at lines 442--443
+Underfull \hbox (badness 10000) in paragraph at lines 461--462
 []\T1/lmr/m/n/10.95 The complete questionnaire (originally in Chinese and translated in
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 442--443
+Underfull \hbox (badness 10000) in paragraph at lines 461--462
 \T1/lmr/m/n/10.95 English) alongside with data cleaning and re-digitalizing is stored in
  []
 
 
 
 [4 <./figure/SampleLocations.jpg>]
-
-LaTeX Warning: Reference `fig:' on page 5 undefined on input line 452.
-
-<figure/conceptual_framework.png, id=213, 1102.1175pt x 479.7925pt>
+<figure/conceptual_framework.png, id=252, 1102.1175pt x 479.7925pt>
 File: figure/conceptual_framework.png Graphic file (type png)
 <use figure/conceptual_framework.png>
-Package pdftex.def Info: figure/conceptual_framework.png  used on input line 455.
+Package pdftex.def Info: figure/conceptual_framework.png  used on input line 475.
 (pdftex.def)             Requested size: 334.60562pt x 145.66661pt.
 
-Package xcolor Warning: Incompatible color definition on input line 462.
+Package xcolor Warning: Incompatible color definition on input line 486.
 
-LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 465.
-(/Users/horanxu/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
-File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 472.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 497.
 
-Package xcolor Warning: Incompatible color definition on input line 477.
-
-
-Package xcolor Warning: Incompatible color definition on input line 477.
+Package xcolor Warning: Incompatible color definition on input line 502.
 
 
-Package xcolor Warning: Incompatible color definition on input line 479.
+Package xcolor Warning: Incompatible color definition on input line 502.
+
+
+Package xcolor Warning: Incompatible color definition on input line 502.
 
 
 
 [5 <./figure/conceptual_framework.png>]
 
-Package xcolor Warning: Incompatible color definition on input line 511.
+Package xcolor Warning: Incompatible color definition on input line 502.
 
 
-Package xcolor Warning: Incompatible color definition on input line 511.
+Package xcolor Warning: Incompatible color definition on input line 502.
+
+
+Package xcolor Warning: Incompatible color definition on input line 504.
+
+
+Package xcolor Warning: Incompatible color definition on input line 546.
+
+
+Package xcolor Warning: Incompatible color definition on input line 546.
 
 
 
 [6]
-Chapter 4.
+
+[7]
+Chapter 3.
 --------------------
  Doctor of Philosophy-- Haoran Xu; McMaster University-- School of Earth, Environment and Society
 --------------------
 
-
-[7
-
-]
 
 [8
 
 ]
 
-[9
+[9]
+
+[10]
+
+[11
+
 
 ]
-Chapter 5.
---------------------
- Doctor of Philosophy-- Haoran Xu; McMaster University-- School of Earth, Environment and Society
---------------------
 
-Underfull \hbox (badness 10000) in paragraph at lines 551--552
+[12]
+Underfull \hbox (badness 1603) in paragraph at lines 704--705
+[]\T1/lmr/m/n/10.95 Considering the mediating effects, perceived travel environment affect travel
+ []
+
+
+
+[13
+
+
+]
+<figure/sati-by-distance.png, id=300, 587.139pt x 529.98pt>
+File: figure/sati-by-distance.png Graphic file (type png)
+<use figure/sati-by-distance.png>
+Package pdftex.def Info: figure/sati-by-distance.png  used on input line 718.
+(pdftex.def)             Requested size: 334.60562pt x 302.03511pt.
+
+
+[14 <./figure/sati-by-distance.png>]
+
+[15]
+Underfull \hbox (badness 2293) in paragraph at lines 740--741
+[]\T1/lmr/m/n/10.95 The innovative highlights of the study would be using SEM modeling to
+ []
+
+
+
+[16
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 763--764
 []\T1/lmr/m/n/10.95 Carneiro, M. J., & Eusébio, C. (2019). Factors influencing the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 551--552
+Underfull \hbox (badness 10000) in paragraph at lines 763--764
 \T1/lmr/m/n/10.95 impact of tourism on happiness. \T1/lmr/m/it/10.95 Anatolia\T1/lmr/m/n/10.95 , \T1/lmr/m/it/10.95 30\T1/lmr/m/n/10.95 (4), 475--496.
  []
 
 
-Underfull \hbox (badness 4024) in paragraph at lines 560--561
+Underfull \hbox (badness 4024) in paragraph at lines 778--779
 []\T1/lmr/m/n/10.95 Gao, X., & Sun, D. (2021). Transport accessibility and social demand:
  []
 
 
-Underfull \hbox (badness 4872) in paragraph at lines 560--561
+Underfull \hbox (badness 4872) in paragraph at lines 778--779
 \T1/lmr/m/n/10.95 A case study of the tibetan plateau. \T1/lmr/m/it/10.95 PLOS ONE\T1/lmr/m/n/10.95 , \T1/lmr/m/it/10.95 16\T1/lmr/m/n/10.95 (9), e0257028.
  []
 
 
-Underfull \hbox (badness 6316) in paragraph at lines 563--564
+Underfull \hbox (badness 6316) in paragraph at lines 781--782
 \T1/lmr/m/n/10.95 in the new millennium. \T1/lmr/m/it/10.95 Communication Monographs\T1/lmr/m/n/10.95 , \T1/lmr/m/it/10.95 76\T1/lmr/m/n/10.95 (4), 408--420.
  []
 
 
-Underfull \hbox (badness 3039) in paragraph at lines 566--567
+Underfull \hbox (badness 3039) in paragraph at lines 784--785
 \T1/lmr/m/n/10.95 well-being and social tourism. \T1/lmr/m/it/10.95 Annals of Tourism Research\T1/lmr/m/n/10.95 , \T1/lmr/m/it/10.95 41\T1/lmr/m/n/10.95 , 42--65.
  []
 
 
 
-[10
+[17
+
 
 ] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
@@ -1057,27 +1093,24 @@ LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: E2B768868D2BA469909E846C5DFF620F;2558.
+(rerunfilecheck)             Checksum: 65ECE4190447350B5DDB907B1454920C;3522.
  ) 
 Here is how much of TeX's memory you used:
- 41404 strings out of 475214
- 1014988 string characters out of 5766236
- 1502699 words of memory out of 5000000
- 63682 multiletter control sequences out of 15000+600000
- 627519 words of font info for 75 fonts, out of 8000000 for 9000
+ 41415 strings out of 475214
+ 1015507 string characters out of 5766236
+ 1506699 words of memory out of 5000000
+ 63681 multiletter control sequences out of 15000+600000
+ 630277 words of font info for 75 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 118i,11n,121p,1097b,1120s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 118i,11n,121p,1369b,1137s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/horanxu/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Users/horanxu/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/horanxu/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></Users/horanxu/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/horanxu/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/horanxu/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb></Users/horanxu/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb></Users/horanxu/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmro10.pfb></Users/horanxu/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></Users/horanxu/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></Users/horanxu/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtti10.pfb>
-Output written on thesis.pdf (27 pages, 887174 bytes).
+Output written on thesis.pdf (34 pages, 1115043 bytes).
 PDF statistics:
- 329 PDF objects out of 1000 (max. 8388607)
- 269 compressed objects within 3 object streams
- 59 named destinations out of 1000 (max. 500000)
- 175 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 409 PDF objects out of 1000 (max. 8388607)
+ 340 compressed objects within 4 object streams
+ 75 named destinations out of 1000 (max. 500000)
+ 196 words of extra memory for PDF output out of 10000 (max. 10000000)
 

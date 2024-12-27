@@ -1,14 +1,23 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Results {#rmd-basics}
+
+```{r ch3-load-packages, echo = FALSE, message=FALSE}
+library(tidyverse)
+```
 
 ## CFA Results
 
 Confirmatory Factor Analysis (CFA) is performed at first to detect if the model can build "perceived tourist attraction environment" and "perceived road environment" as two latent variables. The method models how a set of observed variables relates to one or more latent variables.
 
-According to CFA results (\ref{tab:cfa}), model fit is relatively acceptable. The significant Chi-Square test (p < 0.001) is not unexpected given the large sample size (n = 814). The SRMR (0.040) indicates a good fit, and the CFI (0.926) and TLI (0.905) are close to the acceptable threshold of 0.90, suggesting a moderately acceptable fit overall. However, the RMSEA (0.094) exceeds the typical cutoff of 0.08, meaning that there could be refinements about constructing the two latent variables.
+According to CFA results (\ref{tab:cfa-model-fit}), model fit is relatively acceptable. The significant Chi-Square test (p < 0.001) is not unexpected given the large sample size (n = 814). The SRMR (0.040) indicates a good fit, and the CFI (0.926) and TLI (0.905) are close to the acceptable threshold of 0.90, suggesting a moderately acceptable fit overall. However, the RMSEA (0.094) exceeds the typical cutoff of 0.08, meaning that there could be refinements about constructing the two latent variables.
 
 ```{r, include = FALSE}
-# create a data frame for the model fit indices
-fit_indices.df <- data.frame(
+# create a data frame
+cfa_fit_indices.df <- data.frame(
   Index = c("Chi-Square", "Degrees of Freedom", "P-value (Chi-square)", 
             "CFI", "TLI", "RMSEA", "P-value RMSEA <= 0.05", "SRMR"),
   Value = c(352.570, 43, "<0.001", 
@@ -18,25 +27,212 @@ fit_indices.df <- data.frame(
     "-",
     "-",
     "> 0.05",
-    "≥ 0.90 (acceptable)",
-    "≥ 0.90 (acceptable)",
+    ">= 0.90 (acceptable)",
+    ">= 0.90 (acceptable)",
     "< 0.08 (acceptable)",
     "> 0.05",
     "< 0.08 (acceptable)"
   )
 )
-
-kable(fit_indices.df,
-      booktabs = TRUE,
-      col.names = c("Index", "Value", "Standard"),
-      caption = "\\label{tab:cfa} CFA model fit results: Travel Environment variables") %>%
-  kable_styling(full_width = FALSE, position = "center")
 ```
 
-Regarding parameter estimates,  show that the observed variables load strongly onto their respective latent variables, indicating good measurement properties. For the **perceived tourist attraction environment** latent variable, loadings range from **0.601 to 0.723** (standardized), with `ta_envi2`, `ta_envi3`, and `ta_envi4` showing the strongest relationships. Similarly, for the **perceived road environment** latent variable, loadings are consistently high, ranging from **0.686 to 0.888** (standardized), with `r_envi4` and `r_envi3` being the most strongly associated indicators.
+```{r cfa-model-fit, echo=FALSE, warning=FALSE}
+kableExtra::kable(cfa_fit_indices.df,
+                  "latex",
+                  booktabs = TRUE,
+                  caption = "\\label{tab:cfa-model-fit} CFA model fit results: Travel Environment variables")
+```
 
-The covariance between the two latent variables is significant (estimate = 0.042, p = 0.001), suggesting a moderate correlation (**standardized = 0.136**) between perceptions of tourist attraction environments and road environments. This indicates that individuals who perceive tourist attractions favorably also tend to rate road environments positively.
+Regarding loading estimates, Table \ref{tab:cfa_loadings} shows that the observed variables load strongly onto their respective latent variables, indicating good measurement. For the "perceived tourist attraction environment" latent variable, standardized loadings range from 0.601 to 0.723, with `ta_envi2` ("I think there is a large variety of scenic views along the route"), `ta_envi3` ("I think the attractions I visited are well-known"), and `ta_envi4` ("I think the scenery along the route is unique") showing the strongest relationships. Similarly, for the perceived road environment latent variable, loadings are consistently high as well, ranging from 0.686 to 0.888, with `r_envi4` ("The level and capability of traffic management along the route affected this trip") and `r_envi3` ("The availability of roadside service facilities (e.g., shops, parking lots, gas stations) affected this trip") being the most strongly associated indicators.
 
+```{r, include = FALSE}
+# create the data frame
+cfa_loadings.df <- data.frame(
+  "Latent Variable" = c(
+      "Perceived Tourist Attraction Environment", rep("", 5),  # Leave blanks after first occurrence
+      "Perceived Road Environment", rep("", 4)
+  ),
+  "Observed Variable" = c(
+    "ta_envi1", "ta_envi2", "ta_envi3", "ta_envi4", "ta_envi5", "ta_envi6",
+    "r_envi1", "r_envi2", "r_envi3", "r_envi4", "r_envi5"
+  ),
+  "Coeficient" = cfa_summary[["pe"]][1:11, "std.all"],
+  "S.E." = cfa_summary[["pe"]][1:11, "se"],
+  "t-statistic" = cfa_summary[["pe"]][1:11, "z"]
+)
+```
 
+\newpage
+\blandscape
+
+```{r cfa-loadings, echo=FALSE, warning=FALSE}
+kableExtra::kable(cfa_loadings.df,
+                  "latex",
+                  digits = 3,
+                  booktabs = TRUE,
+                  col.names = linebreak(c("Latent Variable", 
+                                          "Observed Variable", 
+                                          "Coeficient", 
+                                          "S.E.", 
+                                          "t-statistic"),
+                                        align = "c"),
+                  caption = "\\label{tab:cfa_loadings} Standardized coefficients of the measurement models") %>%
+  footnote(c("S.E. represents for standard error.", "All loadings of observable variables except the first one of each latent variable are statistically significant (p < 0.001)."))
+```
+
+\elandscape
+\newpage
+
+The covariance between the two latent variables (standardized = 0.136) is significant (p = 0.001), suggesting a moderate correlation. This indicates that individuals who perceive tourist attractions favorably also tend to rate road environments positively. And later in SEM model the two latent variables that have residual correlations are linked with `~~` symbol.
 
 ## SEM Results
+
+The Structural Equation Modeling (SEM) model demonstrates a good overall fit in Table \ref{tab:sem-model-fit}. The Chi-Square/df ratio of 2.003 is within the acceptable range (< 5), indicating a reasonable relative model fit. While indices as CFI (0.955) and TLI (0.942), exceed the threshold of 0.90, suggesting a strong fit. The RMSEA of 0.036, with a 90% confidence interval of [0.031, 0.041], is well below the acceptable limit of 0.08. Additionally, the SRMR of 0.042 meets the recommended standard (< 0.08). These results collectively indicate that the hypothesized model aligns well with the observed data.
+
+```{r, include = FALSE}
+# create a data frame
+sem_fit_indices.df <- data.frame(
+  Index = c(
+    "Chi-Square", "Degrees of Freedom", "Chi-Square/df", "P-value (Chi-square)", 
+    "CFI", "TLI", "RMSEA", "90% CI RMSEA (Lower)", "90% CI RMSEA (Upper)", 
+    "P-value RMSEA <= 0.05", "SRMR"
+  ),
+  Value = c(
+    492.814, 246, 2.003, "< 0.001", 
+    0.955, 0.942, 0.036, 
+    0.031, 0.041, 1.000, 0.042
+  ),
+  Standard = c(
+    "-", "-", "< 5.0 (acceptable)", "> 0.05", 
+    ">= 0.90 (acceptable)", ">= 0.90 (acceptable)", "< 0.08 (acceptable)", 
+    "-", "-", "> 0.05", "< 0.08 (acceptable)"
+  )
+)
+```
+
+```{r sem-model-fit, echo=FALSE, warning=FALSE}
+kableExtra::kable(
+  sem_fit_indices.df,
+  "latex",
+  booktabs = TRUE,
+  caption = "\\label{tab:sem-model-fit} SEM model fit results"
+) %>%
+  footnote(c("CFI = comparative ﬁt index;", "TLI = Tucker Lewis index;", "RMSEA = root mean square error of approximation;", "SRMR = standardized root mean square residual."))
+```
+
+According to the overall single-group SEM results that considered all observations (Table \ref{tab:sem-loadings}), the overall effects between different pathways are mixed.
+
+```{r, include = FALSE}
+# create the data frame
+sem_loadings.df <- data.frame(
+  "Sections" = c(
+      "Travel Environment", rep("", 1),  # Leave blanks after first occurrence
+      "Travel Modes", rep("", 4),
+      "Travel Expectation", rep("", 0),
+      "Travel Behavior", rep("", 1),
+      "Socio-demographics", rep("", 8)
+  ),
+  " " = c(
+      "Tourist environment",
+      "Road environment",
+      "Car (Driving by Yourself)",
+      "Car (Driving by Others)",
+      "Public transportation",
+      "Bicycle",
+      "Walking",
+      "Travel expectation",
+      "Frequency of travel",
+      "Daily travel distance",
+      "Gender",
+      "Age",
+      "Residence",
+      "Income",
+      "Education level",
+      "Profession",
+      "Household size",
+      "Owing driving licence",
+      "Number of cars"
+    ),
+  "Trip frequency" = sem_summary[["pe"]][c(12:19, " - ", " - ", 20:28), "std.all"],
+  "Daily traveling distance" = sem_summary[["pe"]][c(29:36, " - ", " - ", 37:45), "std.all"],
+  "Travel satisfaction" = sem_summary[["pe"]][c(46:64), "std.all"]
+)
+
+# round the values
+sem_loadings2.df <- sem_loadings.df
+sem_loadings2.df[, 3:5] <- lapply(sem_loadings2.df[, 3:5], function(x) {
+  if (is.numeric(x)) round(x, 3) else x
+})
+
+# adding "*" symbols to represent the level of significance
+# this part below could be enhanced by writing a loop with if() clasue
+sem_loadings2.df[13, 3] <- paste0(sem_loadings2.df[13, 3], "***")
+sem_loadings2.df[5, 3] <- paste0(sem_loadings2.df[3, 3], "**")
+sem_loadings2.df[16, 3] <- paste0(sem_loadings2.df[16, 3], "*")
+sem_loadings2.df[1, 4] <- paste0(sem_loadings2.df[1, 4], "***")
+sem_loadings2.df[2, 4] <- paste0(sem_loadings2.df[2, 4], "**")
+sem_loadings2.df[3, 4] <- paste0(sem_loadings2.df[3, 4], "***")
+sem_loadings2.df[4, 4] <- paste0(sem_loadings2.df[4, 4], "**")
+sem_loadings2.df[5, 4] <- paste0(sem_loadings2.df[5, 4], "***")
+sem_loadings2.df[7, 4] <- paste0(sem_loadings2.df[7, 4], "***")
+sem_loadings2.df[11, 4] <- paste0(sem_loadings2.df[11, 4], "**")
+sem_loadings2.df[13, 4] <- paste0(sem_loadings2.df[13, 4], "***")
+sem_loadings2.df[14, 4] <- paste0(sem_loadings2.df[14, 4], "*")
+sem_loadings2.df[18, 4] <- paste0(sem_loadings2.df[18, 4], "**")
+sem_loadings2.df[1, 5] <- paste0(sem_loadings2.df[1, 5], "***")
+sem_loadings2.df[7, 5] <- paste0(sem_loadings2.df[7, 5], "*")
+sem_loadings2.df[8, 5] <- paste0(sem_loadings2.df[8, 5], "***")
+sem_loadings2.df[11, 5] <- paste0(sem_loadings2.df[11, 5], "*")
+sem_loadings2.df[12, 5] <- paste0(sem_loadings2.df[12, 5], "**")
+sem_loadings2.df[13, 5] <- paste0(sem_loadings2.df[13, 5], "***")
+```
+
+\newpage
+\blandscape
+
+
+```{r sem-loadings, echo=FALSE, warning=FALSE}
+kableExtra::kable(
+  sem_loadings2.df,
+  "latex",
+  booktabs = TRUE,
+  caption = "\\label{tab:sem-loadings} SEM model results"
+) %>%
+  footnote(c("All results are standardized.",
+             "***: Significant at the 0.01 level (p-value < 0.01)",
+             "**: Significant at the 0.05 level (p-value < 0.05)",
+             "*: Significant at the 0.1 level (p-value < 0.1)"))
+```
+
+\elandscape
+\newpage
+
+### The effects of perceived travel environment on travel satisfaction
+
+The results showed that perceived tourist attraction environment had a direct effect on travel satisfaction (0.448) while perceived road environment (-0.003) showed no such significant correlations. The better perceptions people had over the quality and other characteristics of tourist attractions, the higher satisfactory levels they tended to possess during the trip. Though, in terms of perceived road environment, the associations were weak.
+
+Considering the mediating effects, perceived travel environment affect travel satisfaction through travel behavior. It shows that, better tourist site conditions (0.114) led to farther daily travel distance while worse road conditions (-0.069) caused people to travel less. Meanwhile, there existed no associations was obtained between travel environment and trip frequency.
+
+### The effects of travel modes on travel satisfaction
+
+Different levels of tourists’ travel satisfaction were observed in five different travel modes, despite the relationships being mostly not significant. Walking (0.053) is the only travel mode that contributed to leveling up satisfaction, while the other four (i.e., car driving by yourself, car driving by others, public transportation, and bicycle) all resulted in not significant lower satisfaction, with car driving by others (-0.074) lowering the most. 
+
+Regarding the influence travel modes exerted on travel behavior, daily travel distance was generally more associated with travel modes compared to trip frequency. Car, either driven by yourself (0.247), car driven by others (0.127), both significantly caused tourists to travel longer distance, while the former has bigger influence than the latter. Meanwhile, public transit (-0.138) and walking (-0.095) both significantly discouraged tourists from traveling farther. For the effects of travel modes on travel frequency, public transportation (-0.028) is associated with lowering people's intentions of traveling. While for other travel modes, driving by car will lower travel frequency while walking will boost it, though none of them are significant, meaning that there exist no mediating effects towards travel satisfaction either.
+
+### The effects of travel behavior on travel satisfaction
+
+In terms of travel behavior, our study only considered two variables - tourists’ trip frequency to Qinghai-Tibet Plateau and their daily travel distance during the trip. The results showed that higher frequency of travelling to Qinghai-Tibet Plateau had a direct positive effect (0.063) on tourist travel satisfaction, despite the correlation being not significant. This could indicate that as tourists travel to Qinghai-Tibet Plateau more times their satisfactory levels would steadily improve. However, the associations between daily travel distance and travel satisfaction were not significant. This might result in the gradient setting of daily traveling distance in the questionnaire (distance categorized as <10 km, 10-50 km, 50-100 km, 100-200 km, >200 km). However, based on the simple statistical analysis of the average tourists’ satisfactory levels under different distance gradients, it was found that distance-satisfaction relationship might follow a U-shaped pattern as shown in Figure \ref{fig:sati-by-distance}. 
+
+```{r fig3-sati-by-distance, echo=FALSE, out.width="0.8\\linewidth", fig.cap="\\label{fig:sati-by-distance} Travle satisfaction by gradient travel distance levels", fig.align='center'}
+knitr::include_graphics(here::here("figure", "sati-by-distance.png"))
+```
+
+For the single-group scenario, within the 200 kilometers range, tourists’ satisfactory levels fluctuated and slightly decreased (from 4.366 for <10 km to 4.312 for 100-200 km) as they traveled longer distance. However, the pattern displayed a drastic surge of satisfactory levels when travel distance exceeded 200 kilometers. The possible cause for the decrease could be attributed to increasing fatigue of sitting or driving during daily travelling. While for the surge, it is speculated that the beauty and uniqueness of natural landscapes of Qinghai-Tibet Plateau had positive effects on travelers’ eyes and moods, which would first offset the tiredness brought by means of transport and then improve tourists’ satisfactory levels. This pattern was also observed in studies of [@Ettema2011], who theorized that the positive relationships between distance and satisfaction could be ascribed to the inner vales contained activities in travel (e.g., admiring scenery, listening to music, having fun, etc.). Furthermore, considering the huge area of Qinghai-Tibet Plateau and the percentage of people traveling in cars (62.3%), the 200 kilometers could be an important distance demarcating point, where visual contentment gained along the road would prevail over physical fatigue thus leading satisfactory levels to rise.
+
+### Effects of travel expectation and socio-demographics on travel satisfaction
+
+The results showed that travel expectation had a significantly positive effect (0.166) on travel satisfaction only directly. The highly anticipated travel with big expectations before traveling tended to result in higher levels of satisfaction. However, as travel expectation does not has dierect influence over travel bahvior, there seems to be no mediating effects on travel satisfaction.
+
+In terms of socio-demographics, both direct and indirect effects demonstrated high heterogeneity in different paths. The binary exogenous variable residence, which reflected different sources of tourists (0 for non-local, 1 for local), proved to be an important factor that influenced both travel satisfaction and travel behavior. Local people generally had lower satisfactory levels over the course of their whole travel experience compared to non-locals (-0.166). The cause for this might stem from people’s different travel intentions. Taking planned travel time for example, 49.3% non-local people planned to travel longer than a week, while the majority local people (85.0%) only planned one-week travel or even shorter. Further, there could exist hidden factors (i.e., varied subjective well-being levels) that account for the results, regarding income, profession, education, etc. Simultaneously, local people significantly travel more frequently and within shorter distance, which can be regarded as supplementary evidence of different travel intentions. 
+
+For other socio-demographic characteristics, women (0.06) and younger people (-0.08) had higher levels of travel satisfaction, and people who have higher income, better education and more flexible professions also tended to be more satisfactory, though the latter paths were not significant. Considering the effects on travel behavior, those who have inflexible professions (0.046) tend to travel more frequently, while men (-0.063) and people with higher income (0.083), as well as owning a driving license (0.097) would travel longer distance.

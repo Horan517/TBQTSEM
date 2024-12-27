@@ -1,6 +1,6 @@
 # Conclusion {-}
 
-The study probes into ...
+The study probes into how factors as travel behavior and perceived travel environment can influence tourists' travel satisfaction on Qinghai-Tibet Pleateau. The single-group SEM analysis conducted in this model peper revealed mixed effects across different pathways. Perceived tourist attraction environment significantly influenced travel satisfaction, while perceived road environment had no notable direct effect. Mediating effects showed that better tourist site conditions led to longer daily travel distances, whereas worse road conditions reduced travel distance. Travel modes exhibited minimal direct effects on satisfaction, with walking positively contributing and car driving by others showing the largest negative impact. Regarding travel behavior, frequency of travel to the Qinghai-Tibet Plateau had a minor positive effect on satisfaction, although insignificant, and daily travel distance showed no direct association.
 
 The innovative highlights of the study would be using SEM modeling to comprehensively incorporate all relevant factors that could impact travel satisfaction. While it focused on the perspectives of tourism traveling instead of work commuting, a travel activity that has been well researched and concentrated on. Meanwhile, the study supplements the vacancy of similar travel behavior related studies conducted on a plateau area, as most focuses on cities of low altitude.
 
